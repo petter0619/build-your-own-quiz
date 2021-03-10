@@ -1,28 +1,21 @@
 const express = require('express');
 const router =  express.Router();
-// Import route handlers
-const apiController = require('../controllers/apiController');
+const { v4: uuidv4 } = require('uuid');
 // Import error handler
-const { catchAsyncErrors } = require('../errorHandlers');
-
-
-// [OPTIONAL] Route specific res.locals
-router.use( (req, res, next) => {
-    res.locals.apiVariable = 'This variable is only available in /api/... rendered templates';
-    next();
-});
+const { catchAsyncErrors } = require('../utils');
 
 // ---------------- Routes ----------------
 
-// @desc Gets all data from exampleData.json
-// @route = GET /api
-router.get('/', catchAsyncErrors(apiController.getJSON));
+// @desc Gets all data for a single quiz
+// @route = GET /api/qiz/:id
+router.get('/quiz/:id', (req, res) => res.json({ uuid: uuidv4() }));
 
-
-// @desc Creates a new item in the "array" array in exampleData.json
+// @desc Creates a new quiz JSON file in /db
 // @route = POST /api
-router.post('/', catchAsyncErrors(apiController.postJSON));
-
+router.post('/quiz', (req, res) => {
+    res.setHeader('Location', `/quiz/${uuidv4()}`);
+    return res.status(201).json({ quizUrl: uuidv4() });
+});
 
 // Export routes
 module.exports = router;
