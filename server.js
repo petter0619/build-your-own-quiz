@@ -54,7 +54,7 @@ app.use( (req, res, next) => {
 app.use('/', mainRoutes);
 app.use('/api', apiRoutes);
 
-// Add Error Handling
+// Error Handling
 
 // 1.2) Create server on PORT
 app.listen(3001, () => {
