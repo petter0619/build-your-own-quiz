@@ -14,13 +14,6 @@ router.get('/quiz/:id', catchAsyncErrors(async (req, res, next) => {
     return res.json(json);
 }));
 
-/*
-    POST body (JSON.stringify):
-    {
-
-    }
-*/
-
 // @desc Creates a new quiz JSON file in /db
 // @route = POST /api
 router.post('/quiz', catchAsyncErrors(async (req, res) => {

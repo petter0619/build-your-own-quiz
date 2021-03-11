@@ -9,6 +9,7 @@ export default function CreateQuizForm({ questions }) {
     const [quizCreated, setQuizCreated] = useState({ created: false, quizId: '' });
 
     const postQuiz = async quizObj => {
+        if (questions.length < 1) return;
         setLoading(true);
         try {
             const rawResponse = await fetch('http://localhost:3001/api/quiz/', {
@@ -43,7 +44,7 @@ export default function CreateQuizForm({ questions }) {
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="quizname">Name your quiz:</label>
-            <input type="text" name="quizname" id="quizname"/>
+            <input type="text" name="quizname" id="quizname" required/>
             <br />
             <label htmlFor="quizdesc">Describe your quiz:</label>
             <textarea name="quizdesc" id="quizdesc" rows="5" cols="50"/>

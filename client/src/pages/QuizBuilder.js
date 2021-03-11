@@ -11,7 +11,7 @@ const mockQuestions = [
         answer: "A question with 1 right answer hidden with 2 fake ones...",
         multipleChoices: [
           "choice3",
-          "choice1",
+          "A question with 1 right answer hidden with 2 fake ones...",
           "choice2"
         ]
       },

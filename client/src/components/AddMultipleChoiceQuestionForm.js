@@ -1,5 +1,4 @@
 import React from 'react';
-// Helpers
 import { shuffleArray } from '../helpers';
 
 export default function AddMultipleChoiceQuestionForm({addQuestion, setShowMcForm}) {
