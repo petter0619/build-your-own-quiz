@@ -27,13 +27,22 @@ exports.writeJSONtoFile = (filePath, data = {}) => { // rewrites the entire file
   Instead of using try{} catch(e) {} in each controller, we wrap the function in
   catchErrors(), catch any errors they throw, and pass it along to our express middleware with next()
 */
-
 exports.catchAsyncErrors = (cbFunc) => {
     return async (req, res, next) => {
         try {
             await cbFunc(req, res, next);
         } catch(err) {
-            res.render('error', { error: err });
+            next(new Error(err.message || err));
         }
     }    
 };
+
+// Function that shuffles an array into a random order
+exports.shuffleArray = (array) => {
+    const arrayCopy = [...array];
+    for (let i = arrayCopy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arrayCopy[i], arrayCopy[j]] = [arrayCopy[j], arrayCopy[i]];
+    }
+    return arrayCopy;
+}
