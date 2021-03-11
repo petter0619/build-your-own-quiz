@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     if (res.headersSent) return next(err);
     const errorDetails = {
-      name: err.name,
+      error: err.name,
       status: err.status || 500,
       message: err.message,
     };

@@ -1,25 +1,50 @@
 {
-    "quizInfo": {
-        "name": "Example quiz",
-        "description": "This is an example quiz description."
+  "quizInfo": {
+    "name": "Example quiz",
+    "description": "This is an example quiz description.",
+    "questionCount": 5
+  },
+  "questionsAndAnswers": [
+    {
+      "type": "multiple choice",
+      "question": "Question 1?",
+      "answer": "1",
+      "multipleChoices": [
+        "2",
+        "1",
+        "3"
+      ]
     },
-    "questionsAndAnswers": [
-        {
-            "type": "multiple choice",
-            "question": "What is a multiple choice question?",
-            "answer": "A question with 1 right answer hidden with 2 fake ones...",
-            "multipleChoices": ["choice3", "choice1", "choice2"]
-        },
-        {
-            "type": "single answer",
-            "question": "What is a single answer question?",
-            "answer": "A question that takes only 1 exact match answer via text input..."
-        }
-    ],
-    "results": [
-        {
-            "name": "chosenQuizzerName",
-            "score": "8/10"
-        }
-    ]
+    {
+      "type": "single answer",
+      "question": "Question 2?",
+      "answer": "true"
+    },
+    {
+      "type": "multiple choice",
+      "question": "Question 3?",
+      "answer": "3",
+      "multipleChoices": [
+        "3",
+        "2",
+        "1"
+      ]
+    },
+    {
+      "type": "single answer",
+      "question": "Question 4?",
+      "answer": "false"
+    },
+    {
+      "type": "single answer",
+      "question": "Question 5?",
+      "answer": "neither"
+    }
+  ],
+  "results": [
+    {
+      "name": "chosenQuizzerName",
+      "correctAnswers": 8
+    }
+  ]
 }
