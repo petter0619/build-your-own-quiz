@@ -42,7 +42,6 @@ export default function Quiz() {
 
     useEffect(() => {
         if (quizCompleted) {
-            console.log(correctAnswers)
             const participantResult = {
                 name: participant.current,
                 correctAnswers,
