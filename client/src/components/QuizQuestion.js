@@ -5,17 +5,15 @@ import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 // Helpers
 import { formatInputString } from '../helpers';
 
-export default function QuizQuestion({ q, nextQuestion, addAnswer }) {
+export default function QuizQuestion({ q, addAnswer }) {
 
     const answerQuestion = (answer) => {
-        const correctAnswer = answer === formatInputString(q.answer) ? 'correct' : 'incorret';
+        const correctAnswer = answer === formatInputString(q.answer) ? 'correct' : 'incorrect';
         addAnswer(correctAnswer);
-        nextQuestion();
     };
 
     const skipQuestion = () => {
         addAnswer('incorrect');
-        nextQuestion();
     };
 
     return (

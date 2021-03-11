@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 // Components
 import SingleAnswerPreview from '../components/SingleAnswerPreview';
 import MultipleChoicePreview from '../components/MultipleChoicePreview';
+// Helpers
+import { createQuizFetch } from '../helpers';
 
 export default function CreateQuizForm({ questions }) {
     const [loading, setLoading] = useState(false);
@@ -11,27 +13,19 @@ export default function CreateQuizForm({ questions }) {
     const postQuiz = async quizObj => {
         if (questions.length < 1) return;
         setLoading(true);
-        try {
-            const rawResponse = await fetch('http://localhost:3001/api/quiz/', {
-                    method: 'POST',
-                    headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(quizObj),
-            });
-            const {quizId} = await rawResponse.json();
-            setQuizCreated({ created: true, quizId });
-            setLoading(false);
-        } catch (error) {
-            console.error(error);
-            setLoading(false);
-        }
+        createQuizFetch(quizObj)
+            .then(quizId => {
+                setQuizCreated({ created: true, quizId });
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            })
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-
         const newQuiz = {
             quizInfo: {
                 name: e.target.quizname.value,

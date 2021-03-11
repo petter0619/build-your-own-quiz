@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// Componets
+// Components
 import QuizQuestion from '../components/QuizQuestion';
 import StartQuizForm from '../components/StartQuizForm';
 import Loading from '../components/Loading';
 import ParticipantResult from '../components/ParticipantResult';
+// Helpers
+import { getQuizData, updateParticipantResult } from '../helpers';
 
 export default function Quiz() {
     const [loading, setLoading] = useState(true);
@@ -19,8 +21,7 @@ export default function Quiz() {
     const quizName = useRef();
 
     useEffect(() => {
-        fetch(`http://localhost:3001/api/quiz/${quizId}`)
-            .then(res => res.json())
+        getQuizData(quizId)
             .then(data => {
                 if (data.error) throw new Error(data.message);
 
@@ -39,40 +40,37 @@ export default function Quiz() {
             });
     }, []);
 
-    const addAnswer = newAnswer => {
-        if (newAnswer === 'correct') setCorrectAnswers(correctAnswers + 1);
-    };
-
-    const putResults = async (participantResultObj, id) => {
-        setLoading(true);
-        try {
-            const rawResponse = await fetch(`http://localhost:3001/api/quiz/${id}/results`, {
-                    method: 'PUT',
-                    headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(participantResultObj),
-            });
-            const {quizId} = await rawResponse.json();
-            setQuizCompleted(true);
-            setLoading(false);
-        } catch (error) {
-            console.error(error);
-            setLoading(false);
-        }
-    }
-
-    const nextQuestion = async () => {
-        if (index + 1 === questions.length) {
+    useEffect(() => {
+        if (quizCompleted) {
+            console.log(correctAnswers)
             const participantResult = {
                 name: participant.current,
                 correctAnswers,
             };
-            putResults(participantResult, quizId)
+            setLoading(true);
+            updateParticipantResult(participantResult, quizId)
+                .then(data => {
+                    setQuizCompleted(true);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.error(err);
+                    setLoading(false);
+                })
+        }
+    }, [quizCompleted]);
+
+    const nextQuestion = async () => {
+        if (index + 1 === questions.length) {
+            setQuizCompleted(true);
         } else {
             setIndex(index + 1);
         }
+    };
+
+    const addAnswer = newAnswer => {
+        if (newAnswer === 'correct') setCorrectAnswers(correctAnswers + 1);
+        nextQuestion();
     };
 
     return (
@@ -93,6 +91,7 @@ export default function Quiz() {
                 participant={participant.current}
                 correctAnswers={correctAnswers}
                 quizLength={questions.length}
+                quizId={quizId}
             />}
 
             {error.isError && <p>{error.error}</p>}
