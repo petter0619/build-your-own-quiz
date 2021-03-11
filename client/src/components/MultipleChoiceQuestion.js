@@ -1,11 +1,13 @@
 import React from 'react';
+import { formatInputString } from '../helpers';
 
 export default function MultipleChoiceQuestion({ question, answer, multipleChoices, answerQuestion, skipQuestion }) {
     
     const handleSubmit = e => {
         e.preventDefault();
-        const ans = e.target.choice.value;
+        const ans = formatInputString(e.target.choice.value);
         answerQuestion(ans);
+        e.target.reset();
     }
     
     return (

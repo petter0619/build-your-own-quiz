@@ -22,10 +22,11 @@ export default function CreateQuizForm({ questions }) {
             });
             const {quizId} = await rawResponse.json();
             setQuizCreated({ created: true, quizId });
+            setLoading(false);
         } catch (error) {
             console.error(error);
+            setLoading(false);
         }
-        setLoading(false);
     }
 
     const handleSubmit = e => {

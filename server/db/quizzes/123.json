@@ -45,6 +45,18 @@
     {
       "name": "chosenQuizzerName",
       "correctAnswers": 8
+    },
+    {
+      "name": "Jane Doe",
+      "correctAnswers": 4
+    },
+    {
+      "name": "Wes Bos",
+      "correctAnswers": 0
+    },
+    {
+      "name": "Luke Skywalker",
+      "correctAnswers": 3
     }
   ]
 }

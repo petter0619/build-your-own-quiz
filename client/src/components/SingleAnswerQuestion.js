@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { formatInputString } from '../helpers';
 
 export default function SingleAnswerQuestion({question, answer, answerQuestion, skipQuestion }) {
     const handleSubmit = e => {
         e.preventDefault();
-        const ans = e.target.answer.value;
+        const ans = formatInputString(e.target.answer.value);
         answerQuestion(ans);
+        e.target.reset();
     }
     
     return (
