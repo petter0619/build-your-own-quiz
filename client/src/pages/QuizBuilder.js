@@ -4,26 +4,8 @@ import CreateQuizForm from '../components/CreateQuizForm';
 import AddMultipleChoiceQuestionForm from '../components/AddMultipleChoiceQuestionForm';
 import AddSingleAnswerQuestionForm from '../components/AddSingleAnswerQuestionForm';
 
-const mockQuestions = [
-    {
-        type: "multiple choice",
-        question: "What is a multiple choice question?",
-        answer: "A question with 1 right answer hidden with 2 fake ones...",
-        multipleChoices: [
-          "choice3",
-          "A question with 1 right answer hidden with 2 fake ones...",
-          "choice2"
-        ]
-      },
-      {
-        type: "single answer",
-        question: "What is a single answer question?",
-        answer: "A question that takes only 1 exact match answer via text input..."
-      }
-];
-
 export default function QuizBuilder() {
-    const [questions, setQuestions] = useState([...mockQuestions]);
+    const [questions, setQuestions] = useState([]);
     const [showMcForm, setShowMcForm] = useState(false);
     const [showSaForm, setShowSaForm] = useState(false);
 

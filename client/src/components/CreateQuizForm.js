@@ -57,7 +57,7 @@ export default function CreateQuizForm({ questions }) {
                     return <SingleAnswerQuestion key={index} question={question}/>
                 }
             })}
-            <button type="submit">{loading ? "Creating your quiz..." : "Create Quiz"}</button>
+            {questions.length > 0 && <button type="submit">{loading ? "Creating your quiz..." : "Create Quiz"}</button>}
 
             {quizCreated.created && <div>
                 <p>You quiz was successfully created! You can find it here:</p>
