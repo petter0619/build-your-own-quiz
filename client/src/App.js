@@ -12,7 +12,7 @@ function App() {
 			<Switch>
 				<Route exact path="/"><Home /></Route>
 				<Route path="/quiz/:id"><Quiz /></Route>
-        <Route path="/quizbuilder"><QuizBuilder /></Route>
+        		<Route path="/quizbuilder"><QuizBuilder /></Route>
 				<Route path="*"><NotFound /></Route>
 			</Switch>
 		</Router>

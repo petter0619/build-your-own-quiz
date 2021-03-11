@@ -9,8 +9,8 @@ export default function Home() {
         <div>
             Home Page: /
             <StartQuizForm />
-            <Link to={`/quiz/${mockQuizId}`}>Take Quiz!</Link>
-            <Link to="/quizbuilder">Build a Quiz!</Link>
+            <Link to={`/quiz/${mockQuizId}`}><button>Take Quiz!</button></Link>
+            <Link to="/quizbuilder"><button>Build a Quiz!</button></Link>
         </div>
     );
 }
