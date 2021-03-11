@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // Components
-import SingleAnswerQuestion from '../components/SingleAnswerQuestion';
-import MultipleChoiceQuestion from '../components/MultipleChoiceQuestion';
+import SingleAnswerPreview from '../components/SingleAnswerPreview';
+import MultipleChoicePreview from '../components/MultipleChoicePreview';
 
 export default function CreateQuizForm({ questions }) {
     const [loading, setLoading] = useState(false);
@@ -52,9 +52,9 @@ export default function CreateQuizForm({ questions }) {
             <p style={{fontWeight: 'bold'}}>Questions:</p>
             {questions.map((question, index) => {
                 if (question.type === "multiple choice") {
-                    return <MultipleChoiceQuestion key={index} question={question}/>
+                    return <MultipleChoicePreview key={index} question={question}/>
                 } else if (question.type === "single answer") {
-                    return <SingleAnswerQuestion key={index} question={question}/>
+                    return <SingleAnswerPreview key={index} question={question}/>
                 }
             })}
             {questions.length > 0 && <button type="submit">{loading ? "Creating your quiz..." : "Create Quiz"}</button>}

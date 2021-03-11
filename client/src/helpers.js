@@ -1,4 +1,4 @@
-export const shuffleArray = (array) => {
+export const shuffleArray = array => {
     const arrayCopy = [...array];
     for (let i = arrayCopy.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -6,3 +6,5 @@ export const shuffleArray = (array) => {
     }
     return arrayCopy;
 }
+
+export const formatInputString = string => string.trim().toLowerCase();

@@ -1,26 +1,28 @@
 import React from 'react';
 
-export default function MultipleChoiceQuestion({question}) {
+export default function MultipleChoiceQuestion({ question, answer, multipleChoices, answerQuestion, skipQuestion }) {
     
-    //const { question, answer, multipleChoices } = question;
+    const handleSubmit = e => {
+        e.preventDefault();
+        const ans = e.target.choice.value;
+        answerQuestion(ans);
+    }
     
     return (
-        <div>
-            <button type="button">X</button>
-
-            <label htmlFor="question">Question:</label>
-            <input type="text" name="question" id="question" value={question.question} disabled/>
-            <br />
+        <form onSubmit={handleSubmit}>
+            <p>{question}</p>
             <ul>
-                {question.multipleChoices.map((q, index) => {
+                {multipleChoices.map((choice, index) => {
                     return <li key={index}>
-                        <label htmlFor={`option${index}`}>
-                            {q === question.answer ? "Answer:" : "Option:"}
+                        <label htmlFor={`choice${index}`}>
+                            <input type="radio" id={`choice${index}`} name={`choice`} value={choice} required/>
+                            {choice}
                         </label>
-                        <input type="text" name={`option${index}`} id={`option${index}`} value={q} disabled/>
                     </li>
                 })}
             </ul>
-        </div>
+            <button type="button" onClick={skipQuestion}>Skip</button>
+            <button type="submit">Answer</button>
+        </form>
     )
 }

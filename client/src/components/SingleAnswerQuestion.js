@@ -1,17 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-export default function SingleAnswerQuestion({question}) {
+export default function SingleAnswerQuestion({question, answer, answerQuestion, skipQuestion }) {
+    const handleSubmit = e => {
+        e.preventDefault();
+        const ans = e.target.answer.value;
+        answerQuestion(ans);
+    }
+    
     return (
-        <div>
-            <button type="button">X</button>
-            <label htmlFor="question">Question:</label>
-            <input type="text" name="question" id="question" value={question.question} disabled/>
-            <ul>
-                <li>
-                    <label htmlFor="answer">Answer:</label>
-                    <input type="text" name="answer" id="answer" value={question.answer} disabled/>
-                </li>
-            </ul>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <p>{question}</p>
+            <input type="text" name="answer" required/>
+            <button type="button" onClick={skipQuestion}>Skip</button>
+            <button type="submit">Answer</button>
+        </form>
     )
 }
