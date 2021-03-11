@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // Components
-import StartQuizForm from '../components/StartQuizForm';
+import QuizFinderForm from '../components/QuizFinderForm';
 
 export default function Home() {
-    const mockQuizId = '123';
     return (
         <div>
             Home Page: /
-            <StartQuizForm />
-            <Link to={`/quiz/${mockQuizId}`}><button>Take Quiz!</button></Link>
+            <QuizFinderForm />
+            <br />
             <Link to="/quizbuilder"><button>Build a Quiz!</button></Link>
         </div>
     );
