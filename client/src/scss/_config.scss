@@ -1,0 +1,11 @@
+/* Import Fonts */
+
+* {
+    box-sizing: border-box;
+  }
+
+@mixin media-desktop {
+    @media screen and (min-width: 800px) {
+        @content;
+    }
+}

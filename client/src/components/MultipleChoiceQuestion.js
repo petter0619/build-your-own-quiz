@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatInputString } from '../helpers';
 
-export default function MultipleChoiceQuestion({ question, answer, multipleChoices, answerQuestion, skipQuestion }) {
+export default function MultipleChoiceQuestion({ question, multipleChoices, answerQuestion, skipQuestion }) {
     
     const handleSubmit = e => {
         e.preventDefault();
@@ -11,20 +11,20 @@ export default function MultipleChoiceQuestion({ question, answer, multipleChoic
     }
     
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="quiz-question-form">
             <p>{question}</p>
-            <ul>
+            <div>
                 {multipleChoices.map((choice, index) => {
-                    return <li key={index}>
-                        <label htmlFor={`choice${index}`}>
-                            <input type="radio" id={`choice${index}`} name={`choice`} value={choice} required/>
+                    return <div className="form-check" key={index}>
+                        <label htmlFor={`choice${index}`} key={index} className="form-check-label">
+                            <input type="radio" id={`choice${index}`} name={`choice`} value={choice} required className="form-check-input"/>
                             {choice}
                         </label>
-                    </li>
-                })}
-            </ul>
-            <button type="button" onClick={skipQuestion}>Skip</button>
-            <button type="submit">Answer</button>
+                    </div>}
+                )}
+            </div>
+            <button type="button" onClick={skipQuestion} className="btn btn-outline-danger">Skip</button>
+            <button type="submit" className="btn btn-success">Answer</button>
         </form>
     )
 }

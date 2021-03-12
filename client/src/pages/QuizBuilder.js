@@ -15,18 +15,24 @@ export default function QuizBuilder() {
         setQuestions(stateCopy);
     }
 
+    const removeQuestion = index => {
+        const stateCopy = [...questions];
+        stateCopy.splice(index, 1);
+        setQuestions(stateCopy);
+    }
+
     return (
-        <div>
-            QuizBuilder Page: /quizbuilder
-            <CreateQuizForm questions={questions}/>
-            <button onClick={() => {
-                setShowMcForm(true);
+        <section className="quiz-builder-page">
+            <h1>Build Your Own Quiz!</h1>
+            <CreateQuizForm questions={questions} removeQuestion={removeQuestion}/>
+            <button className="btn btn-primary" onClick={() => {
+                setShowMcForm(!showMcForm);
                 if (showSaForm) setShowSaForm(false);
             }}>
                 + Add Multiple Choice Question
             </button>
-            <button onClick={() => {
-                setShowSaForm(true);
+            <button className="btn btn-primary" onClick={() => {
+                setShowSaForm(!showSaForm);
                 if (showMcForm) setShowMcForm(false);
             }}>
                 + Add Single Answer Question
@@ -34,6 +40,6 @@ export default function QuizBuilder() {
 
             {showMcForm && <AddMultipleChoiceQuestionForm addQuestion={addQuestion} setShowMcForm={setShowMcForm}/>}
             {showSaForm && <AddSingleAnswerQuestionForm addQuestion={addQuestion} setShowSaForm={setShowSaForm}/>}
-        </div>
+        </section>
     )
 }

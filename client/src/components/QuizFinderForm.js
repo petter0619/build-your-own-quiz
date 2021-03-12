@@ -10,9 +10,11 @@ export default function QuizFinderForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="quizid" required/>
-            <button type="submit">Take Quiz!</button>
+        <form onSubmit={handleSubmit} className="quiz-finder-form">
+            <h2>Quiz Time!</h2>
+            <div className="form-text">Please enter your quiz ID below:</div>
+            <input type="text" name="quizid" required className="form-control" placeholder="Quiz ID"/>
+            <button type="submit" className="btn btn-primary">Take Quiz!</button>
         </form>
     )
 }

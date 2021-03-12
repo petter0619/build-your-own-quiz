@@ -6,7 +6,7 @@ import MultipleChoicePreview from '../components/MultipleChoicePreview';
 // Helpers
 import { createQuizFetch } from '../helpers';
 
-export default function CreateQuizForm({ questions }) {
+export default function CreateQuizForm({ questions, removeQuestion }) {
     const [loading, setLoading] = useState(false);
     const [quizCreated, setQuizCreated] = useState({ created: false, quizId: '' });
 
@@ -37,22 +37,32 @@ export default function CreateQuizForm({ questions }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="quizname">Name your quiz:</label>
-            <input type="text" name="quizname" id="quizname" required/>
+        <form onSubmit={handleSubmit} className="create-quiz-form">
+            <label htmlFor="quizname" className="form-label">Name your quiz:</label>
+            <input type="text" name="quizname" id="quizname" required className="form-control"/>
             <br />
-            <label htmlFor="quizdesc">Describe your quiz:</label>
-            <textarea name="quizdesc" id="quizdesc" rows="5" cols="50"/>
-
+            <label htmlFor="quizdesc" className="form-label">Describe your quiz:</label>
+            <textarea name="quizdesc" id="quizdesc" rows="5" cols="50" className="form-control"/>
+            <br />
             <p style={{fontWeight: 'bold'}}>Questions:</p>
             {questions.map((question, index) => {
                 if (question.type === "multiple choice") {
-                    return <MultipleChoicePreview key={index} question={question}/>
+                    return <MultipleChoicePreview
+                        key={index}
+                        question={question}
+                        removeQuestion={removeQuestion}
+                        index={index}
+                    />
                 } else if (question.type === "single answer") {
-                    return <SingleAnswerPreview key={index} question={question}/>
+                    return <SingleAnswerPreview
+                        key={index}
+                        question={question}
+                        removeQuestion={removeQuestion}
+                        index={index}
+                    />
                 }
             })}
-            {questions.length > 0 && <button type="submit">{loading ? "Creating your quiz..." : "Create Quiz"}</button>}
+            {questions.length > 0 && <button type="submit" className="btn btn-success">{loading ? "Creating your quiz..." : "Create Quiz"}</button>}
 
             {quizCreated.created && <div>
                 <p>You quiz was successfully created! You can find it here:</p>

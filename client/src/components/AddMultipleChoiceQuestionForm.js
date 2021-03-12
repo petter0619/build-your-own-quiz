@@ -20,20 +20,25 @@ export default function AddMultipleChoiceQuestionForm({addQuestion, setShowMcFor
     }
     
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="question">Enter your question:</label>
-            <input type="text" name="question" id="question" required/>
-            <br />
-            <label htmlFor="answer">What the answer is:</label>
-            <input type="text" name="answer" id="answer" required/>
-            <br />
-            <label htmlFor="choice1">Multiple choice option:</label>
-            <input type="text" name="choice1" id="choice1" required/>
-            <br />
-            <label htmlFor="choice2">Multiple choice option:</label>
-            <input type="text" name="choice2" id="choice2" required/>
+        <form onSubmit={handleSubmit} className="add-question-form">
+            <div className="input-group">
+                <span className="input-group-text">Question:</span>
+                <input type="text" name="question" id="question" required className="form-control"/>
+            </div>
+            <div className="input-group">
+                <span className="input-group-text">Answer:</span>
+                <input type="text" name="answer" id="answer" required className="form-control"/>
+            </div>
+            <div className="input-group">
+                <span className="input-group-text">Option:</span>
+                <input type="text" name="choice1" id="choice1" required className="form-control"/>
+            </div>
+            <div className="input-group">
+                <span className="input-group-text">Option:</span>
+                <input type="text" name="choice2" id="choice2" required className="form-control"/>
+            </div>
 
-            <button type="submit">Add Question</button>
+            <button type="submit" className="btn btn-success">Add Question</button>
         </form>
     )
 }

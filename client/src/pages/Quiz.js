@@ -73,11 +73,11 @@ export default function Quiz() {
     };
 
     return (
-        <div>
+        <section className="quiz-page">
             {loading && <Loading />}
 
             {!loading && !error.isError && <header>
-                <h1>{quizName.current}</h1>
+                <h1 className="quiz-page__header">{quizName.current}</h1>
             </header>}
 
             {participant.current === undefined && !error.isError && <StartQuizForm participant={participant} setIndex={setIndex}/>}
@@ -94,6 +94,6 @@ export default function Quiz() {
             />}
 
             {error.isError && <p>{error.error}</p>}
-        </div>
+        </section>
     )
 }

@@ -17,7 +17,7 @@ export default function QuizQuestion({ q, addAnswer }) {
     };
 
     return (
-        <div>
+        <div className="quiz-question-container">
             {q.type === 'multiple choice' && <MultipleChoiceQuestion
                 {...q}
                 answerQuestion={answerQuestion}

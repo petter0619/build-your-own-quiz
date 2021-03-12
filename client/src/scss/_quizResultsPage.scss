@@ -1,0 +1,28 @@
+.quiz-results-page {
+    height: 100vh;
+    padding: 50px 10px 0 10px;
+
+    & > h1 {
+        margin-bottom: 16px;
+        text-align: center;
+    }
+}
+
+.table-container {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+
+    & > table {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .td-name {
+        text-align: left !important;
+        padding-left: 15px;
+    }
+}

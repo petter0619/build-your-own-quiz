@@ -1,23 +1,22 @@
 import React from 'react';
 
-export default function MultipleChoicePreview({question}) {
-    
-    //const { question, answer, multipleChoices } = question;
-    
+export default function MultipleChoicePreview({question, removeQuestion, index}) {
+        
     return (
-        <div>
-            <button type="button">X</button>
+        <div className="question-preview question-preview--multiple-choice">
+            <button type="button" className="btn btn-outline-danger" onClick={() => removeQuestion(index)}>X</button>
 
-            <label htmlFor="question">Question:</label>
-            <input type="text" name="question" id="question" value={question.question} disabled/>
-            <br />
+            <div className="input-group">
+                <span className="input-group-text">Question:</span>
+                <input type="text" name="question" id="question" value={question.question} disabled className="form-control"/>
+            </div>
             <ul>
                 {question.multipleChoices.map((q, index) => {
-                    return <li key={index}>
-                        <label htmlFor={`option${index}`}>
+                    return <li key={index} className="input-group">
+                        <span className="input-group-text">
                             {q === question.answer ? "Answer:" : "Option:"}
-                        </label>
-                        <input type="text" name={`option${index}`} id={`option${index}`} value={q} disabled/>
+                        </span>
+                        <input type="text" name={`option${index}`} id={`option${index}`} value={q} disabled className="form-control"/>
                     </li>
                 })}
             </ul>

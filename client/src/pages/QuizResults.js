@@ -35,18 +35,31 @@ export default function QuizResults() {
     }, []);
 
     return (
-        <div>
+        <section className="quiz-results-page">
             {loading && <Loading />}
-            {!loading && results.length > 0 && <section>
+            {!loading && results.length > 0 && <>
                 <h1>{quizInfo.current.name} Scoreboard</h1>
-                <ol>
+                <div className="table-container">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {results.map((result, index) => {
-                        return <li key={index}>
-                            {`${result.name} - ${result.correctAnswers} / ${quizInfo.current.questionCount}`}
-                        </li>
+                        return <tr key={index}>
+                            <th scope="row">{index + 1}</th>
+                            <td className="td-name">{result.name}</td>
+                            <td>{`${result.correctAnswers} / ${quizInfo.current.questionCount}`}</td>
+                        </tr>
                     })}
-                </ol>
-            </section>}
-        </div>
+                    </tbody>
+                </table>
+                </div>
+            </>}
+        </section>
     )
 }

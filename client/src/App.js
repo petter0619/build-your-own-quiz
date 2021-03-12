@@ -6,10 +6,13 @@ import Quiz from './pages/Quiz';
 import QuizBuilder from './pages/QuizBuilder';
 import QuizResults from './pages/QuizResults';
 import NotFound from './pages/NotFound';
+// Components
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router>
+			<Navbar />
 			<Switch>
 				<Route exact path="/"><Home /></Route>
 				<Route path="/quiz/:id/results"><QuizResults /></Route>
