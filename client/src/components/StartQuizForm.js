@@ -9,8 +9,7 @@ export default function StartQuizForm({participant, setIndex}) {
     
     return (
         <form onSubmit={handleSubmit} className="start-quiz-form">
-            <label htmlFor="name" className="form-label">Enter your name:</label>
-            <input type="text" name="name" id="name" required className="form-control"/>
+            <input type="text" name="name" id="name" required className="form-control" placeholder="Enter your name..."/>
             <button type="submit" className="btn btn-primary">Start Quiz!</button>
         </form>
     )

@@ -1,0 +1,45 @@
+{
+  "quizInfo": {
+    "name": "Star Wars Quiz",
+    "description": "This is a Star Wars quiz!!",
+    "id": "88097dec-1a85-473f-a240-9a14f427233c",
+    "questionCount": 3
+  },
+  "questionsAndAnswers": [
+    {
+      "type": "multiple choice",
+      "question": "Who is Obi-Wan Kenobi?",
+      "answer": "A jedi",
+      "multipleChoices": [
+        "A jedi",
+        "A lonely old man",
+        "Some weirdo who likes to hand around with teenage boys..."
+      ]
+    },
+    {
+      "type": "single answer",
+      "question": "Is Yoda a human or an alien?",
+      "answer": "alien"
+    },
+    {
+      "type": "multiple choice",
+      "question": "What is the gold robot called?",
+      "answer": "C3PO",
+      "multipleChoices": [
+        "R2DGold",
+        "Golden Boy",
+        "C3PO"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "name": "Luke Skywalker",
+      "correctAnswers": 2
+    },
+    {
+      "name": "Leia Organa",
+      "correctAnswers": 2
+    }
+  ]
+}

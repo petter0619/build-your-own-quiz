@@ -64,9 +64,8 @@ export default function CreateQuizForm({ questions, removeQuestion }) {
             })}
             {questions.length > 0 && <button type="submit" className="btn btn-success">{loading ? "Creating your quiz..." : "Create Quiz"}</button>}
 
-            {quizCreated.created && <div>
+            {quizCreated.created && <div className="create-quiz-form--success">
                 <p>You quiz was successfully created! You can find it here:</p>
-                <br />
                 <Link to={`/quiz/${quizCreated.quizId}`}>
                     {`${window.location.origin}/quiz/${quizCreated.quizId}`}
                 </Link>
