@@ -15,13 +15,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   
   background-image: url("../orange-question-mark-background-with-text-space_1017-27394.jpg");
-  // background-repeat: no-repeat;
-  // background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1, h2, h3, h4, h5 h6 {
+  font-family: 'Monoton', cursive;
+  font-weight: 400;
+  text-shadow: #e0e0e0 1px 1px 0;
 }
 
 // #root {
